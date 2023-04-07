@@ -79,7 +79,7 @@
     background-color: rgb(43, 160, 176);
     height: 1px;
     position: absolute;
-    top: 40%;
+    top: 30%;
     z-index: 2;
     box-shadow: 0 0 4px #00b7ff;
     -webkit-animation: scanning 2s infinite;
