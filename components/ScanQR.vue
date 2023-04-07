@@ -37,7 +37,9 @@ export default {
             console.log(result);
             check(result)
             this.result = result;
-            this.isOpen = true;
+            if(result.length > 0){
+              this.isOpen = true;
+            }
         },
         close(){
           this.isOpen = false;
