@@ -27,7 +27,7 @@ export default {
     data() {
         return {
             result: '',
-            isOpen: false,
+            isOpen: true,
             isLink: false,
             link: '',
         };
