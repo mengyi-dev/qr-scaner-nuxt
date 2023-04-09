@@ -13,12 +13,15 @@
   
   export default {
     name: "stream-barcode-reader",
-  
+    props: {
+      isClosed: Boolean
+    },
     data() {
       return {
         isLoading: true,
         codeReader: new BrowserMultiFormatReader(),
         isMediaStreamAPISupported: navigator && navigator.mediaDevices && "enumerateDevices" in navigator.mediaDevices,
+        stream: null,
       };
     },
   
@@ -36,17 +39,33 @@
     },
   
     beforeUnmount() {
-      this.codeReader.reset();
+      this.stop();
     },
   
     methods: {
       start() {
-        this.codeReader.decodeFromVideoDevice(undefined, this.$refs.scanner, (result, err) => {
-          if (result) {
-            this.$emit("decode", result.text);
-            this.$emit("result", result);
-          }
+        navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+          this.$refs.scanner.srcObject = stream;
+          this.stream = stream;
+
+          this.codeReader.decodeFromVideoDevice(undefined, this.$refs.scanner, (result, err) => {
+            if (result) {
+              this.$emit("decode", result.text);
+              this.$emit("result", result);
+            }
+          });
+        }).catch((error) => {
+          console.error(error);
         });
+      },
+      stop() {
+        if (this.stream) {
+          const tracks = this.stream.getTracks();
+        if (tracks.length) {
+          tracks.forEach(track => track.stop());
+        }
+        this.stream = null;
+      }
       },
     },
   };
