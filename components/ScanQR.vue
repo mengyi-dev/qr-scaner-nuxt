@@ -5,7 +5,7 @@
       <section class="mt-20 p-8 h-fit rounded-xl">
         <StreamBarcodeReader @result="onDecode" />
       </section>
-      <p class="text-slate-300 text-center text-sm mt-4">Created by Mengyi</p>
+      <p class="text-slate-300 text-center text-sm mt-4">Create by Mengyi</p>
       <p class="text-slate-300 text-center text-sm mt-4">version 0.1</p>
       <div v-if="isOpen">
         <div @click="close" class="absolute backdrop-blur-md bg-slate-500 w-[576px] h-screen z-40 top-0 left-0 opacity-70">
@@ -41,8 +41,6 @@ export default {
     },
     methods: {
         onDecode(result) {
-            console.log(result);
-            // check(result)
             this.result = result;
             if(!!this.result){
               this.isOpen = true;
