@@ -64,13 +64,15 @@ export default {
           }
         }
     },
-    mounted(){
-      // Disables the page zoom
-      document.addEventListener('gesturestart', function (e) {
-        e.preventDefault();
-      });
-    }
 }
 </script>
 <style>
+html {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: none;
+  zoom: 1.0;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+}
 </style>
