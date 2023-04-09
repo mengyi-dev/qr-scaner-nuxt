@@ -38,10 +38,6 @@
       };
     },
   
-    beforeUnmount() {
-      this.stop();
-    },
-  
     methods: {
       start() {
         navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
@@ -57,15 +53,6 @@
         }).catch((error) => {
           console.error(error);
         });
-      },
-      stop() {
-        if (this.stream) {
-          const tracks = this.stream.getTracks();
-        if (tracks.length) {
-          tracks.forEach(track => track.stop());
-        }
-        this.stream = null;
-      }
       },
     },
   };

@@ -3,7 +3,7 @@
     <div class="max-w-[576px] relative mx-auto h-screen bg-slate-900  px-5 py-10">
       <StartApp />
       <section class="mt-20 p-8 h-fit rounded-xl">
-        <StreamBarcodeReader @result="onDecode" ref="stopRef" />
+        <StreamBarcodeReader @result="onDecode" />
       </section>
       <p class="text-slate-300 text-center text-sm mt-4">Created by Mengyi</p>
       <p class="text-slate-300 text-center text-sm mt-4">version 0.1</p>
@@ -46,8 +46,6 @@ export default {
             this.result = result;
             if(!!this.result){
               this.isOpen = true;
-              const childComponent = this.$refs.stopRef;
-              childComponent.stop();
             }
         },
         close(){
