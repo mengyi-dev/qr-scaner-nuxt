@@ -12,13 +12,16 @@
         </div>
         <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-fit h-fit z-50 rounded-xl shadow-lg flex items-center justify-center">
           <!-- <a v-if="isLink" :href="link[0]">{{result}}</a> -->
-          <div class="bg-white px-2 py-1 rounded-full flex gap-1 w-[280px]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 border-r border-slate-700 pr-1">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-            </svg>
-  
-            <a :href="result" class="break-words truncate">{{result}}</a>
-
+          <div v-if="isValidURL" class="bg-white px-2 py-1 rounded-full flex gap-1 w-[280px]">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 border-r border-slate-700 pr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+              </svg>
+            </div>
+            <a :href="result" class="break-words truncate">{{result}} {{ isValidURL }}</a>
+          </div>
+          <div v-else class="w-full bg-white h-auto p-5 rounded-md break-words">
+              {{ result }}
           </div>
         </div>
       </div>
@@ -28,14 +31,12 @@
 </template>
 
 <script>
-
 export default {
     name: "ScanQR",
     data() {
         return {
             result: null,
             isOpen: false,
-            isLink: false,
             link: '',
         };
     },
@@ -43,22 +44,19 @@ export default {
         onDecode(result) {
             this.result = result;
             if(!!this.result){
+              check(this.result)
               this.isOpen = true;
             }
         },
         close(){
           this.isOpen = false;
           this.result = null;
-        },
-        check(result){
-          const urlRegex = /(https?:\/\/[^\s]+)/;
-          if (urlRegex.test(result)) {
-            this.isLink = true
-            this.link = result.match(/\bhttps?:\/\/\S+/gi)
-          } else {
-            this.isLink = false
-          }
         }
     },
+    computed: {
+      isValidURL(){
+        return this.result.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) !== null
+      }
+    }
 }
 </script>

@@ -6,10 +6,12 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "dev:host": "nuxt --hostname 10.148.101.212 --port 8000"
   },
   "dependencies": {
     "core-js": "^3.25.3",
+    "link-prevue": "^1.2.0",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
     "vue-barcode-reader": "^1.0.3",
