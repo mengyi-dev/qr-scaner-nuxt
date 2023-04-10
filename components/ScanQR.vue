@@ -44,7 +44,6 @@ export default {
         onDecode(result) {
             this.result = result;
             if(!!this.result){
-              check(this.result)
               this.isOpen = true;
             }
         },
