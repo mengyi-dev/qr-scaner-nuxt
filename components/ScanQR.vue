@@ -7,7 +7,7 @@
       </section>
       <p class="text-slate-300 text-center text-sm mt-4">Create by Mengyi</p>
       <p class="text-slate-300 text-center text-sm mt-4">version 0.1</p>
-      <div v-if="isOpen">
+      <div v-show="isOpen">
         <div @click="close" class="absolute backdrop-blur-md bg-slate-500 w-[576px] h-screen z-40 top-0 left-0 opacity-70">
         </div>
         <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-fit h-fit z-50 rounded-xl shadow-lg flex items-center justify-center">
@@ -64,23 +64,26 @@ export default {
           this.result = null;
         },
         copyResult(){
-          // Get the button element by ref
-          const button = this.$refs.copyButton;
           
-          // Create a new Clipboard instance attached to the button element
-          const clipboard = new Clipboard(button);
-          
-          // Log the text that has been copied to the clipboard
-          clipboard.on('success', (e) => {
-            console.log('Copied:', e.text);
-          });
           this.isCopied = true
         }
     },
     computed: {
       isValidURL(){
-        return typeof this.result === 'string' ? this.result.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) !== null : false;
+        return typeof this.result === 'string' && this.result.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g) !== null;
       }
     },
+    mounted(){
+      // Get the button element by ref
+      const button = this.$refs.copyButton;
+      
+      // Create a new Clipboard instance attached to the button element
+      const clipboard = new Clipboard(button);
+      
+      // Log the text that has been copied to the clipboard
+      clipboard.on('success', (e) => {
+        console.log('Copied:', e.text);
+      });
+    }
 }
 </script>
