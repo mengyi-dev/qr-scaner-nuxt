@@ -1,8 +1,7 @@
 <template>
   <div class="scanner-container">
     <div v-show="!isLoading">
-      <video poster="data:image/gif,AAAA" ref="scanner"></video>
-      <div class="overlay-element"></div>
+      <video poster="data:image/gif,AAAA" ref="scanner" width="100%"  height="100%"></video>
       <div class="laser"></div>
     </div>
   </div>
@@ -54,32 +53,24 @@ export default {
 
 <style scoped>
 video {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: cover;
+  margin: 0 auto;
+  overflow: hidden;
 }
 .scanner-container {
   position: relative;
   border-radius: 10px;
 }
 
-.overlay-element {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(30, 30, 30, 0.5);
-
-  -webkit-clip-path: polygon(0% 0%, 0% 100%, 20% 100%, 20% 20%, 80% 20%, 80% 80%, 20% 80%, 20% 100%, 100% 100%, 100% 0%);
-  clip-path: polygon(0% 0%, 0% 100%, 20% 100%, 20% 20%, 80% 20%, 80% 80%, 20% 80%, 20% 100%, 100% 100%, 100% 0%);
-}
-
 .laser {
-  width: 60%;
-  margin-left: 20%;
+  width: 90%;
+  margin-left: 5%;
   background-color: rgb(43, 160, 176);
-  height: 1px;
+  height: 2px;
   position: absolute;
-  top: 30%;
+  top: 10%;
   z-index: 2;
   box-shadow: 0 0 4px #00b7ff;
   -webkit-animation: scanning 2s infinite;
@@ -87,14 +78,14 @@ video {
 }
 @-webkit-keyframes scanning {
   50% {
-    -webkit-transform: translateY(95px);
-    transform: translateY(95px);
+    -webkit-transform: translateY(195px);
+    transform: translateY(195px);
   }
 }
 @keyframes scanning {
   50% {
-    -webkit-transform: translateY(95px);
-    transform: translateY(75px);
+    -webkit-transform: translateY(250px);
+    transform: translateY(250px);
   }
 }
 </style>
