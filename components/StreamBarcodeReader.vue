@@ -99,14 +99,14 @@ video {
 }
 @-webkit-keyframes scanning {
   50% {
-    -webkit-transform: translateY(195px);
-    transform: translateY(195px);
+    -webkit-transform: translateY(180px);
+    transform: translateY(180px);
   }
 }
 @keyframes scanning {
   50% {
-    -webkit-transform: translateY(250px);
-    transform: translateY(250px);
+    -webkit-transform: translateY(180px);
+    transform: translateY(180px);
   }
 }
 </style>
