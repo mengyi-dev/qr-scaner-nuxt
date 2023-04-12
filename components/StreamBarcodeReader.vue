@@ -1,8 +1,9 @@
 <template>
   <div class="scanner-container">
     <div v-show="!isLoading">
-      <video poster="data:image/gif,AAAA" ref="scanner" width="100%"  height="100%"></video>
+      <video poster="data:image/gif,AAAA" ref="scanner" class="aspect-square"></video>
       <div class="laser"></div>
+      <div class=""></div>
     </div>
   </div>
 </template>
@@ -54,7 +55,7 @@ export default {
 <style scoped>
 video {
   max-width: 90%;
-  max-height: 90%;
+  max-height: auto;
   object-fit: cover;
   margin: 0 auto;
   overflow: hidden;
