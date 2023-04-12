@@ -1,9 +1,10 @@
 <template>
   <div class="scanner-container">
     <div v-show="!isLoading">
-      <video poster="data:image/gif,AAAA" ref="scanner" class="aspect-square"></video>
+      <video poster="data:image/gif,AAAA" ref="scanner" class="aspect-square">
+      </video>
       <div class="laser"></div>
-      <div class=""></div>
+      <div class="corner-border-scan"></div>
     </div>
   </div>
 </template>
@@ -54,23 +55,42 @@ export default {
 
 <style scoped>
 video {
-  max-width: 90%;
+  max-width: 60%;
   max-height: auto;
   object-fit: cover;
   margin: 0 auto;
   overflow: hidden;
+  position: relative;
 }
 .scanner-container {
   position: relative;
   border-radius: 10px;
 }
+.corner-border-scan {
+  width: 62%;
+  height: 103.5%;
+  position: absolute;
+  top: -1.8%;
+  margin-left: 19%;
+  background:
+    linear-gradient(to right, #00b7ff 4px, transparent 4px) 0 0,
+    linear-gradient(to right, #00b7ff 4px, transparent 4px) 0 100%,
+    linear-gradient(to left, #00b7ff 4px, transparent 4px) 100% 0,
+    linear-gradient(to left, #00b7ff 4px, transparent 4px) 100% 100%,
+    linear-gradient(to bottom, #00b7ff 4px, transparent 4px) 0 0,
+    linear-gradient(to bottom, #00b7ff 4px, transparent 4px) 100% 0,
+    linear-gradient(to top, #00b7ff 4px, transparent 4px) 0 100%,
+    linear-gradient(to top, #00b7ff 4px, transparent 4px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
 
 .laser {
-  width: 90%;
-  margin-left: 5%;
+  width: 62%;
+  position: absolute;
+  margin-left: 19%;
   background-color: rgb(43, 160, 176);
   height: 2px;
-  position: absolute;
   top: 10%;
   z-index: 2;
   box-shadow: 0 0 4px #00b7ff;
