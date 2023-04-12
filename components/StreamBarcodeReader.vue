@@ -50,14 +50,11 @@ export default {
       });
     },
     async turnOnFlashlight(){
-      console.log('turn on flash');
-
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } });
       const track = stream.getVideoTracks()[0];
       await track.applyConstraints({ advanced: [{ torch: true }] });
     },
     async turnOffFlashlight() {
-      console.log('turn off flash');
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } });
       const track = stream.getVideoTracks()[0];
       await track.applyConstraints({ advanced: [{ torch: false }] });

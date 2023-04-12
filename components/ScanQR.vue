@@ -7,7 +7,7 @@
       </section>
       <section class="flex gap-4 mx-auto w-fit">
         <div class="flex flex-col gap-1 w-[77px] items-center justify-center cursor-pointer">
-          <div class="text-slate-300 bg-slate-700 w-fit p-2 rounded-full hover:bg-[#00b7ff]" @click="handleFlash">
+          <div class="text-slate-300 w-fit p-2 rounded-full" :class="isFlashOn ? 'bg-[#00b7ff]' : 'bg-slate-700'" @click="handleFlash">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
             </svg>
@@ -21,7 +21,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
             </svg>
           </div>
-          <p class="text-slate-200">Upload QR</p>
+          <p class="text-slate-200 whitespace-nowrap">Upload QR</p>
         </div>
       </section>
       <div v-show="isOpen">
