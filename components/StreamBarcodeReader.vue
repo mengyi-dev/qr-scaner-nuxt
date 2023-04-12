@@ -89,7 +89,7 @@ video {
   width: 92%;
   position: absolute;
   margin-left: 4%;
-  background-color: rgb(43, 160, 176);
+  background-color: #00b7ff;
   height: 2px;
   top: 20%;
   z-index: 2;
