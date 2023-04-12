@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
 video {
-  max-width: 60%;
+  max-width: 90%;
   max-height: auto;
   object-fit: cover;
   margin: 0 auto;
@@ -67,11 +67,11 @@ video {
   border-radius: 10px;
 }
 .corner-border-scan {
-  width: 62%;
-  height: 103.5%;
+  width: 92%;
+  height: 102.3%;
   position: absolute;
-  top: -1.8%;
-  margin-left: 19%;
+  top: -1.15%;
+  margin-left: 4%;
   background:
     linear-gradient(to right, #00b7ff 4px, transparent 4px) 0 0,
     linear-gradient(to right, #00b7ff 4px, transparent 4px) 0 100%,
@@ -86,12 +86,12 @@ video {
 }
 
 .laser {
-  width: 62%;
+  width: 92%;
   position: absolute;
-  margin-left: 19%;
+  margin-left: 4%;
   background-color: rgb(43, 160, 176);
   height: 2px;
-  top: 10%;
+  top: 20%;
   z-index: 2;
   box-shadow: 0 0 4px #00b7ff;
   -webkit-animation: scanning 2s infinite;
