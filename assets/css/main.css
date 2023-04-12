@@ -5,7 +5,7 @@
 body {
     max-width: 576px;
     margin: 0 auto;
-    webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: none;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
