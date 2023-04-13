@@ -113,3 +113,11 @@ export default {
     }
 }
 </script>
+<style>
+body{
+  -webkit-transition: all .1s ease-out;
+  transition: all .1s ease-out;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
