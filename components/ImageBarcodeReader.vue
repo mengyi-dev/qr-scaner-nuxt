@@ -1,5 +1,5 @@
 <template>
-  <input @change="onChangeInput" type="file" id="upload" ref="uploadFile" name="image" accept="image/*" capture="environment" hidden />
+  <input @change="onChangeInput" type="file" id="upload" name="image" accept="image/*" hidden />
 </template>
   
   <script>
@@ -22,7 +22,6 @@
         const reader = new FileReader();
         reader.onload = this.processFile;
         reader.readAsDataURL(files[0]);
-        console.log('uploading')
       },
   
       processFile(e) {
